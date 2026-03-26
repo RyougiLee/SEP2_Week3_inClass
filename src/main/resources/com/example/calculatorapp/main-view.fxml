@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculatorapp.Controller">
+   <center>
+      <VBox prefHeight="325.0" prefWidth="385.0" spacing="8.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="17.0" prefWidth="382.0" text="%ui.label.selectLanguage" />
+            <ComboBox fx:id="languageSelectMenu" prefHeight="25.0" prefWidth="116.0" />
+            <Button fx:id="confirmLanguageButton" mnemonicParsing="false" onAction="#handleLanguageConfirmed" prefHeight="25.0" prefWidth="151.0" text="%ui.button.confirmLanguage" />
+            <Separator prefWidth="200.0" />
+            <Label prefHeight="17.0" prefWidth="327.0" text="%ui.label.enterNumbers" />
+            <TextField fx:id="itemNumbersInput" />
+            <Button fx:id="enterItemButton" mnemonicParsing="false" onAction="#handleEnterItems" prefHeight="25.0" prefWidth="95.0" text="%ui.button.enterItems" />
+            <HBox prefHeight="22.0" prefWidth="385.0" spacing="120.0">
+               <children>
+                  <Label text="%ui.label.itemQuantity" />
+                  <Label text="%ui.label.unitPrice" />
+               </children>
+            </HBox>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+               <content>
+                  <VBox fx:id="itemsContainer" prefHeight="197.0" prefWidth="382.0" />
+               </content>
+            </ScrollPane>
+            <Button fx:id="calculateButton" mnemonicParsing="false" onAction="#handleCalculate" text="%ui.button.calculate" />
+            <HBox prefHeight="25.0" prefWidth="385.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="62.0" text="%ui.label.total" />
+                  <Label fx:id="totalPriceLabel" text="0" />
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </center>
+</BorderPane>
