@@ -27,6 +27,8 @@ public class Controller {
     @FXML
     Label totalPriceLabel;
 
+    private CalculatorModel model = new CalculatorModel();
+
     @FXML public void handleLanguageConfirmed(){
         String selectedLanguage = languageSelectMenu.getValue();
         Locale locale = null;
@@ -73,7 +75,7 @@ public class Controller {
     }
 
     @FXML public void handleCalculate(){
-        double total = 0;
+        List<CalculatorModel.Item> items = new ArrayList<>();
         for(Node node: itemsContainer.getChildren()){
             if(node instanceof HBox row){
                 TextField quantityTextField = (TextField) row.getChildren().get(0);
@@ -86,13 +88,14 @@ public class Controller {
                     if(!quantityText.isEmpty() && !priceText.isEmpty()){
                         double quantity = Double.parseDouble(quantityText);
                         double price = Double.parseDouble(priceText);
-                        total += quantity * price;
+                        items.add(new CalculatorModel.Item(quantity, price));
                     }
                 }  catch (Exception e){
                     System.out.println("Skip line");
                 }
             }
         }
+        double total = model.calculateTotal(items);
         totalPriceLabel.setText(String.format("%.2f", total));
     }
 

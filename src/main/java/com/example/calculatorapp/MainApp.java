@@ -23,6 +23,7 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/com/example/calculatorapp/main-view.fxml"), bundle);
         Scene scene = new Scene(loader.load());
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Zongru Li / Calculator");
         primaryStage.show();
     }
 
