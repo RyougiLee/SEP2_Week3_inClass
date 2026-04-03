@@ -2,21 +2,19 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK21'
-        maven 'Maven3'
+
+        jdk 'jdk21'
+        maven 'maven3'
     }
 
     environment {
-
         IMAGE_NAME = "calculator-app"
-
         BUILD_TAG = "${env.BUILD_NUMBER}"
     }
 
     stages {
         stage('Checkout') {
             steps {
-
                 checkout scm
             }
         }
@@ -25,19 +23,17 @@ pipeline {
             steps {
                 echo 'Starting Maven Build...'
 
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Unit Tests') {
             steps {
                 echo 'Running JUnit Tests...'
-
-                sh 'mvn test'
+                bat 'mvn test'
             }
             post {
                 always {
-
                     junit 'target/surefire-reports/*.xml'
                 }
             }
@@ -54,8 +50,7 @@ pipeline {
         stage('Package JAR') {
             steps {
                 echo 'Packaging application into JAR...'
-
-                sh 'mvn package -DskipTests'
+                bat 'mvn package -DskipTests'
             }
         }
 
@@ -63,8 +58,8 @@ pipeline {
             steps {
                 echo "Building Docker Image: ${IMAGE_NAME}:${BUILD_TAG}"
 
-                sh "docker build -t ${IMAGE_NAME}:${BUILD_TAG} ."
-                sh "docker tag ${IMAGE_NAME}:${BUILD_TAG} ${IMAGE_NAME}:latest"
+                bat "docker build -t ${IMAGE_NAME}:${BUILD_TAG} ."
+                bat "docker tag ${IMAGE_NAME}:${BUILD_TAG} ${IMAGE_NAME}:latest"
             }
         }
     }
@@ -72,7 +67,6 @@ pipeline {
     post {
         success {
             echo 'Pipeline completed successfully!'
-
             archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
         }
         failure {
