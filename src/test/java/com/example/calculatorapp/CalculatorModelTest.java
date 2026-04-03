@@ -15,7 +15,7 @@ public class CalculatorModelTest {
 
     @BeforeEach
     void setUp(){
-        model = new CalculatorModel();
+        model = new CalculatorModel("English");
     }
 
     @Test
