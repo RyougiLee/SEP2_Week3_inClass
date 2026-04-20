@@ -2,5 +2,5 @@ projectKey=SEP2_week3
 serverUrl=http://localhost:9000
 serverVersion=26.3.0.120487
 dashboardUrl=http://localhost:9000/dashboard?id=SEP2_week3
-ceTaskId=75680dc0-d5f2-4033-9387-4e6a2a823a52
-ceTaskUrl=http://localhost:9000/api/ce/task?id=75680dc0-d5f2-4033-9387-4e6a2a823a52
+ceTaskId=68b2c551-c309-4fde-87b7-16280e45419d
+ceTaskUrl=http://localhost:9000/api/ce/task?id=68b2c551-c309-4fde-87b7-16280e45419d

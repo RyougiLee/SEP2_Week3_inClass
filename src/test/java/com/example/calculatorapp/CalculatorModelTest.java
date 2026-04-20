@@ -37,5 +37,23 @@ public class CalculatorModelTest {
         );
 
         assertEquals(325.0, model.calculateTotal(cart));
+        assertEquals(6, model.getTotalItems());
+        assertEquals(325.0, model.getTotalCost());
+    }
+
+    @Test
+    @DisplayName("Test language getter and setter")
+    void testLanguageAccessors(){
+        assertEquals("English", model.getLanguage());
+        model.setLanguage("Finnish");
+        assertEquals("Finnish", model.getLanguage());
+    }
+
+    @Test
+    @DisplayName("Test Item accessors")
+    void testItemAccessors(){
+        CalculatorModel.Item item = new CalculatorModel.Item(5, 10.0);
+        assertEquals(5, item.getQuantity());
+        assertEquals(10.0, item.getUnitPrice());
     }
 }
